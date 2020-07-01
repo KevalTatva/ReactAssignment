@@ -1,8 +1,13 @@
 import React from "react";
 import "./styles.css";
-import { render } from "react-dom";
 import InputType from "./FormField";
 import ButtonType from "./FormField";
+
+var UserJson = [
+  { UserName: "John", Password: "Doe" },
+  { UserName: "Anna", Password: "Smith" },
+  { UserName: "Peter", Password: "Jones" }
+];
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -15,7 +20,20 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit() {
-    alert(this.state.UserName + this.state.Password);
+    //alert(this.state.UserName + this.state.Password);
+    var Isvalid = UserJson.map(item => {
+      if (
+        item.UserName === this.state.UserName &&
+        item.Password === this.state.Password
+      ) {
+        return true;
+      } else {
+        this.setState({ UserName: "", Password: "" });
+        return false;
+      }
+    });
+    if (Isvalid) alert("Yup!");
+    else alert("Invalid UserName or Password");
   }
 
   render() {

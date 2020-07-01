@@ -8,6 +8,7 @@ export default function InputType(props) {
         type={props.type}
         placeholder={props.placeholder}
         value={props.value}
+        onChange={props.onChange}
       />
     </div>
   );
